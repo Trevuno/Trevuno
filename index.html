@@ -1,37 +1,320 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trevuno - Boost Your Productivity</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Trevuno — Unlock Your Potential</title>
+
+<!-- Google font -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --accent:#00c6a7;
+    --bg:#f5f6f8;
+    --card:#ffffff;
+    --muted:#7b7f87;
+    --dark:#111217;
+  }
+
+  /* Reset + base */
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;}
+  body{background:var(--bg);color:var(--dark);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+
+  /* Header */
+  header{
+    position:fixed;left:0;right:0;top:0;z-index:30;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 24px;background:rgba(255,255,255,0.6);backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(15,20,25,0.03);
+  }
+  .brand{font-weight:700;color:var(--dark);letter-spacing:1px}
+  nav a{margin:0 12px;text-decoration:none;color:var(--dark);font-weight:600;font-size:14px;opacity:0.9}
+  .signup{
+    padding:8px 14px;border-radius:10px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;
+    box-shadow:0 6px 18px rgba(0,198,167,0.18);
+  }
+
+  /* Hero area */
+  .hero{
+    min-height:88vh; display:flex;align-items:center;justify-content:center; padding-top:70px;
+    position:relative; overflow:hidden;
+    /* background image: prefer local path, fallback to assets/hero.jpg */
+    background-image: url('/mnt/data/IMG_2970.png'), url('assets/hero.jpg');
+    background-size:cover; background-position:center; background-repeat:no-repeat;
+  }
+
+  /* dark overlay for contrast with white text */
+  .hero::after{
+    content:"";position:absolute;left:0;right:0;top:0;bottom:0;
+    background:linear-gradient(180deg, rgba(9, 12, 14, 0.35) 0%, rgba(8, 12, 16, 0.25) 40%, rgba(8,12,16,0.15) 100%);
+    pointer-events:none;
+  }
+
+  .hero-inner{
+    position:relative; z-index:2; text-align:center; width:100%; max-width:1200px; padding:36px;
+  }
+  .hero h1{color:#fff;font-size:44px;margin:0 0 10px;letter-spacing:1px;font-weight:700}
+  .hero p{color:rgba(255,255,255,0.9);margin:0 0 28px;font-size:18px}
+
+  /* layout: cards + crystal area */
+  .panels{display:flex;gap:28px;align-items:flex-start;justify-content:center;margin-top:14px;flex-wrap:wrap}
+  .card{
+    background:var(--card);border-radius:16px;padding:22px;width:300px;box-shadow:0 12px 30px rgba(12,18,22,0.06);
+    text-align:center;
+  }
+  .card h3{margin:6px 0 8px;font-size:18px}
+  .card p{color:var(--muted);font-size:14px;margin:0}
+
+  /* Crystal ball gateway */
+  .gateway{
+    display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:44px;
+    width:100%;
+  }
+
+  .orb{
+    width:220px;height:220px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    position:relative; cursor:pointer;
+    box-shadow: 0 18px 40px rgba(7,11,14,0.35), inset 0 -8px 24px rgba(0,0,0,0.12);
+    transition: transform .35s cubic-bezier(.2,.9,.2,1);
+  }
+  .orb:active{ transform: translateY(3px) scale(.995); }
+
+  /* mystic swirling layers (using pseudo elements for depth) */
+  .orb .glow{
+    position:absolute;inset:-30px;border-radius:50%;filter:blur(28px);opacity:.7;
+    background:radial-gradient(circle at 30% 30%, rgba(122,53,255,0.18), transparent 20%),
+               radial-gradient(circle at 70% 70%, rgba(2,200,167,0.12), transparent 20%);
+    mix-blend-mode: screen;
+  }
+
+  .orb .surface{
+    width:88%;height:88%;border-radius:50%;overflow:hidden;position:relative;background:
+      radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15), transparent 15%),
+      linear-gradient(180deg, rgba(24,8,54,0.85) 0%, rgba(18,6,48,0.76) 100%);
+    display:flex;align-items:center;justify-content:center;backdrop-filter:blur(2px);
+  }
+
+  /* swirling animated layer */
+  .orb .swirl{
+    position:absolute;inset:0;border-radius:50%;mix-blend-mode:screen;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(255,255,255,0.06), transparent 10%),
+      conic-gradient(from 0turn, rgba(142,64,255,0.18), rgba(2,200,167,0.12), rgba(96,30,255,0.16), rgba(2,200,167,0.08));
+    animation: swirl 8s linear infinite;
+    opacity:0.95;
+    transform: rotate(0deg) scale(1.02);
+  }
+
+  @keyframes swirl{
+    from{ transform: rotate(0deg) scale(1.02); filter: hue-rotate(0deg); }
+    to{ transform: rotate(360deg) scale(1.02); filter: hue-rotate(30deg); }
+  }
+
+  /* inner glass sheen */
+  .orb .sheen{
+    position:absolute;left:6%;top:6%;width:86%;height:86%;border-radius:50%;
+    background:linear-gradient(120deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02));
+    mix-blend-mode:overlay;pointer-events:none;
+  }
+
+  /* CTA inside orb */
+  .orb .cta{
+    position:relative;z-index:6;display:flex;flex-direction:column;align-items:center;gap:10px;
+    text-align:center;padding:6px;
+  }
+  .orb .cta .btn{
+    background:rgba(255,255,255,0.95);border-radius:999px;padding:10px 16px;font-weight:700;color:#241432;
+    border:none;cursor:pointer;box-shadow:0 8px 18px rgba(23,10,40,0.12);
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .orb .cta .btn:hover{ transform:translateY(-3px); box-shadow:0 14px 26px rgba(23,10,40,0.14); }
+
+  .orb .hint{ color:rgba(255,255,255,0.9); font-weight:600; font-size:13px; letter-spacing:0.6px; text-shadow:0 4px 24px rgba(0,0,0,0.45)}
+
+  /* Sign-up modal */
+  .modal{
+    position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(6,8,12,0.45);z-index:60;
+  }
+  .modal .panel{
+    background:#fff;border-radius:12px;padding:22px;max-width:480px;width:92%;box-shadow:0 18px 44px rgba(10,12,20,0.28);
+  }
+  .modal h2{margin:0 0 8px}
+  .modal label{display:block;margin-top:10px;font-size:13px;color:#444}
+  .modal input{width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #e6e9ee}
+  .modal .actions{display:flex;gap:10px;justify-content:flex-end;margin-top:14px}
+  .modal .actions button{padding:10px 12px;border-radius:8px;border:none;cursor:pointer}
+  .modal .close{background:#eee}
+  .modal .submit{background:var(--accent);color:#fff;font-weight:700}
+
+  /* Footer */
+  footer{padding:26px;text-align:center;color:#7b7f87;font-size:14px}
+
+  /* responsiveness */
+  @media (max-width:900px){
+    .hero h1{font-size:34px}
+    .card{width:260px}
+    .orb{width:190px;height:190px}
+  }
+  @media (max-width:560px){
+    header{padding:12px}
+    nav{display:none}
+    .hero{padding:90px 18px 60px}
+    .panels{flex-direction:column;align-items:center}
+    .orb{width:160px;height:160px}
+    .hero h1{font-size:26px}
+    .hero p{font-size:15px}
+  }
+</style>
 </head>
 <body>
-    <header>
-        <h2>Trevuno</h2>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="features.html">Features</a>
-            <a href="use.html">Use</a>
-            <a href="download.html">Download</a>
-            <a href="about.html">About</a>
-        </nav>
-    </header>
 
-    <section class="hero">
-        <h1>Welcome to Trevuno</h1>
-        <p>Your ultimate productivity and motivation companion</p>
-        <button onclick="window.location.href='use.html'">Get Started</button>
-    </section>
+<header>
+  <div class="brand">Trevuno</div>
+  <nav aria-label="Main navigation">
+    <a href="#organize">Organize</a>
+    <a href="#productivity">Productivity</a>
+    <a href="#motivate">Motivate</a>
+    <a href="#blog">Blog</a>
+  </nav>
+  <a class="signup" href="#signup" id="headerSignup">Sign Up</a>
+</header>
 
-    <section class="container">
-        <h2>Why Trevuno?</h2>
-        <p>Plan efficiently, track your tasks, and stay motivated to reach your goals.</p>
-    </section>
+<main>
+  <section class="hero" role="banner" aria-label="Hero">
+    <div class="hero-inner">
+      <h1>UNLOCK YOUR POTENTIAL</h1>
+      <p>Organize your life. Maximize productivity. Fuel your drive.</p>
 
-    <footer>
-        &copy; 2025 Trevuno. All Rights Reserved.
-    </footer>
+      <div class="panels" aria-hidden="false">
+        <div class="card">
+          <h3>Organize</h3>
+          <p>Declutter your space. Manage your tasks.</p>
+        </div>
+
+        <div class="card">
+          <h3>Productivity</h3>
+          <p>Goal setting. Habit building.</p>
+        </div>
+
+        <div class="card">
+          <h3>Motivate</h3>
+          <p>Daily inspiration. Mindset shift.</p>
+        </div>
+      </div>
+
+      <div class="gateway" aria-label="Gateway to signup">
+        <h2 style="color:#fff;margin:22px 0 6px;font-weight:600">Enter Your Journey</h2>
+        <p style="color:rgba(255,255,255,0.9);margin:0 0 18px">Tap the crystal to begin</p>
+
+        <!-- Crystal ball -->
+        <div class="orb" id="crystalOrb" role="button" aria-pressed="false" aria-label="Open signup">
+          <div class="glow" aria-hidden="true"></div>
+          <div class="swirl" aria-hidden="true"></div>
+
+          <div class="surface">
+            <div class="sheen" aria-hidden="true"></div>
+
+            <!-- CTA inside orb -->
+            <div class="cta" aria-hidden="false">
+              <div class="hint">Your productivity starts here</div>
+              <button class="btn" id="orbBtn">Start</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<!-- Sign-up modal -->
+<div class="modal" id="signupModal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="panel" role="document">
+    <h2>Create your account</h2>
+    <p style="color:#666;margin:0 0 10px">Join Trevuno — reclaim your focus and build momentum.</p>
+
+    <label for="email">Email</label>
+    <input id="email" type="email" placeholder="you@example.com">
+
+    <label for="name">Name</label>
+    <input id="name" type="text" placeholder="Your name">
+
+    <div class="actions">
+      <button class="close" id="modalClose">Cancel</button>
+      <button class="submit" id="modalSubmit">Create account</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © 2025 Trevuno · Built for focus and real progress
+</footer>
+
+<script>
+  // Orb/button interactions & modal
+  const orb = document.getElementById('crystalOrb');
+  const orbBtn = document.getElementById('orbBtn');
+  const modal = document.getElementById('signupModal');
+  const modalClose = document.getElementById('modalClose');
+  const modalSubmit = document.getElementById('modalSubmit');
+  const headerSignup = document.getElementById('headerSignup');
+
+  function openModal(){
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(){
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+
+  orb.addEventListener('click', ()=> {
+    openModal();
+  });
+  orbBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    openModal();
+  });
+  headerSignup.addEventListener('click', (e)=>{ e.preventDefault(); openModal(); });
+
+  modalClose.addEventListener('click', closeModal);
+  modalSubmit.addEventListener('click', ()=> {
+    // placeholder: you can wire this up to your backend or auth provider
+    alert('Thanks — account creation is a stub in this demo. Hook up your auth backend to proceed.');
+    closeModal();
+  });
+
+  // allow closing modal by clicking outside
+  modal.addEventListener('click', (e)=>{
+    if(e.target === modal) closeModal();
+  });
+
+  // keyboard accessibility
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape') closeModal();
+  });
+
+  // small hover/tilt effect for orb based on pointer move
+  (function addTilt(){
+    let rect = null;
+    orb.addEventListener('mousemove', (ev)=>{
+      rect = orb.getBoundingClientRect();
+      const cx = rect.left + rect.width/2;
+      const cy = rect.top + rect.height/2;
+      const dx = (ev.clientX - cx) / rect.width;
+      const dy = (ev.clientY - cy) / rect.height;
+      orb.style.transform = `perspective(800px) rotateX(${ -dy * 8 }deg) rotateY(${ dx * 8 }deg)`;
+    });
+    orb.addEventListener('mouseleave', ()=> orb.style.transform='translateZ(0) rotateX(0) rotateY(0)');
+  })();
+</script>
+
 </body>
 </html>
+
+
