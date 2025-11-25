@@ -99,6 +99,7 @@ nav {
         flex-direction: column;
     }
 }
+
 /* Crystal ball orb */
 .orb .surface {
     width: 88%;
@@ -112,5 +113,48 @@ nav {
     justify-content: center;
     backdrop-filter: blur(2px);
 }
+
+/* === Feature Cards Custom Styling === */
+.feature-card {
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    text-align: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+}
+
+/* Per-card vibrant gradients */
+.feature-card.organize {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+}
+
+.feature-card.productivity {
+    background: linear-gradient(135deg, #4ecdc4 0%, #45b7af 100%);
+}
+
+.feature-card.motivate {
+    background: linear-gradient(135deg, #5567ff 0%, #7a5fff 100%);
+}
+
+/* Mobile: stack nicely */
+@media (max-width: 768px) {
+    .features {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
 
 
