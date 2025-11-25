@@ -99,3 +99,17 @@ nav {
         flex-direction: column;
     }
 }
+/* Crystal ball orb */
+.orb .surface {
+    width: 88%;
+    height: 88%;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    background: url('assets/crystalball.png') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(2px);
+}
+
