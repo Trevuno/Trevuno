@@ -112,40 +112,36 @@ nav {
     justify-content: center;
     backdrop-filter: blur(2px);
 }
-.card {
-  width: 300px;
-  height: 180px;
-  padding: 20px;
-  border-radius: 12px;
-  color: white;
-  font-weight: bold;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease;
-  position: absolute;
+.feature-card {
+    min-height: 200px;       /* same height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
 }
 
-.card:hover {
-  transform: scale(1.05);
+.feature-card:hover {
+    transform: scale(1.05);
 }
 
-.card.organize {
-  background-color: #FF6B6B;
-  top: 100px;
-  left: 50px;
+/* Individual colors */
+.feature-card.organize {
+    background: linear-gradient(135deg, #FF6B6B, #FF8E53);
 }
 
-.card.productivity {
-  background-color: #4ECDC4;
-  top: 300px;
-  right: 50px;
+.feature-card.productivity {
+    background: linear-gradient(135deg, #4ECDC4, #45B7AF);
 }
 
-.card.motivate {
-  background-color: #5567FF;
-  bottom: 100px;
-  left: 50%;
-  transform: translateX(-50%);
+.feature-card.motivate {
+    background: linear-gradient(135deg, #5567FF, #7A5FFF);
 }
+
 
 
 
