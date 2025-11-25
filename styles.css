@@ -112,51 +112,65 @@ nav {
     justify-content: center;
     backdrop-filter: blur(2px);
 }
+/* Force lively colored, equal-sized cards */
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 24px;
+  align-items: stretch; /* make heights match */
+}
+
 .feature-card {
-    min-height: 200px;       /* same height */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    color: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 14px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  color: white;
+  text-align: center;
+  padding: 24px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  background: #444; /* fallback until per-card colors apply */
 }
 
 .feature-card:hover {
-    transform: scale(1.05);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
 }
 
-/* Individual colors */
+/* Per-card vibrant gradients */
 .feature-card.organize {
-    background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
 }
 
 .feature-card.productivity {
-    background: linear-gradient(135deg, #4ECDC4, #45B7AF);
+  background: linear-gradient(135deg, #4ecdc4 0%, #45b7af 100%);
 }
 
 .feature-card.motivate {
-    background: linear-gradient(135deg, #5567FF, #7A5FFF);
+  background: linear-gradient(135deg, #5567ff 0%, #7a5fff 100%);
 }
-<div class="features">
-  <div class="feature-card organize">
-    <h3>Organize</h3>
-    <p>Declutter your space. Manage your tasks.</p>
-  </div>
-  <div class="feature-card productivity">
-    <h3>Productivity</h3>
-    <p>Goal setting. Habit building.</p>
-  </div>
-  <div class="feature-card motivate">
-    <h3>Motivate</h3>
-    <p>Daily inspiration. Mindset shift.</p>
-  </div>
-</div>
 
+/* Mobile: stack nicely */
+@media (max-width: 768px) {
+  .features {
+    grid-template-columns: 1fr;
+  }
+}
 
+<section class="container">
+  <div class="feature-card organize">...</div>
+</section>
+
+<section class="container">
+  <div class="feature-card productivity">...</div>
+</section>
+
+<section class="container">
+  <div class="feature-card motivate">...</div>
+</section>
 
 
 
