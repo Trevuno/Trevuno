@@ -5,7 +5,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    filter: blur(30px);
+   
 
 }
 
@@ -15,7 +15,7 @@
     border-radius: 50%;
     background: radial-gradient(circle at 30% 30%, #ffffffd0, #7ab7ff80, #3d6bff40);
     box-shadow: 0 0 20px #7faaff90, 0 0 45px #7faaff50 inset;
-    filter: blur(0.5px);
+    filter: blur(10px);
     position: absolute;
     z-index: 1;
 }
@@ -53,5 +53,6 @@
     60% { opacity: 1; transform: translate(-50%, -180%) scale(1.1); }
     100% { opacity: 1; transform: translate(-50%, -200%) scale(1); }
 }
+
 
 
