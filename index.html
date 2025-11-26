@@ -1,57 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trevuno</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trevuno — Unlock Your Potential</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <header>
-    <div class="brand">Trevuno</div>
+  <div class="brand">Trevuno</div>
+  <nav>
+    <a href="#organize">Organize</a>
+    <a href="#productivity">Productivity</a>
+    <a href="#motivate">Motivate</a>
+  </nav>
+  <a class="signup" href="#signup" id="headerSignup">Sign Up</a>
 </header>
 
-<section class="hero">
+<main>
+  <section class="hero">
     <div class="hero-inner">
+      <h1>UNLOCK YOUR POTENTIAL</h1>
+      <p>Organize your life. Maximize productivity. Fuel your drive.</p>
 
-        <h1>Welcome to Trevuno</h1>
-        <p>Your guided path to productivity, clarity, and motivation.</p>
+      <div class="gateway">
+        <h2 class="entry-title">Enter Your Journey</h2>
+        <p class="entry-subtitle">Click the crystal ball to begin</p>
 
-        <div class="gateway">
-            <h2 class="entry-title">Click the crystal ball to begin</h2>
-
-            <div class="orb" id="orb">
-                <div class="glow"></div>
-                <div class="swirl"></div>
-                <div class="surface">
-                    <div class="sheen"></div>
-                </div>
+        <div class="orb" id="crystalOrb">
+          <div class="glow"></div>
+          <div class="swirl"></div>
+          <div class="surface">
+            <div class="sheen"></div>
+            <div class="cta">
+              <div class="hint">Your productivity starts here</div>
+              <button class="btn" id="orbBtn">Start</button>
             </div>
+          </div>
         </div>
 
-        <!-- Floating cards -->
-        <div class="floating-cards">
-            <div class="card" id="card1">
-                <h3>Motivation</h3>
-                <p>Boost your energy & mindset.</p>
-            </div>
-
-            <div class="card" id="card2">
-                <h3>Organize</h3>
-                <p>Bring clarity to your day.</p>
-            </div>
-
-            <div class="card" id="card3">
-                <h3>Productivity</h3>
-                <p>Do more with better focus.</p>
-            </div>
+        <!-- Cards -->
+        <div class="cards-container">
+          <div class="card" id="organizeCard"><h3>Organize</h3><p>Declutter your space. Manage your tasks.</p></div>
+          <div class="card" id="productivityCard"><h3>Productivity</h3><p>Goal setting. Habit building.</p></div>
+          <div class="card" id="motivateCard"><h3>Motivate</h3><p>Daily inspiration. Mindset shift.</p></div>
         </div>
+      </div>
 
     </div>
-</section>
+  </section>
+</main>
 
-<script src="script.js"></script>
+<!-- Modal -->
+<div class="modal" id="signupModal">
+  <div class="panel">
+    <h2>Create your account</h2>
+    <p class="modal-desc">Join Trevuno — reclaim your focus and build momentum.</p>
+
+    <label for="email">Email</label>
+    <input id="email" type="email" placeholder="you@example.com">
+
+    <label for="name">Name</label>
+    <input id="name" type="text" placeholder="Your name">
+
+    <div class="actions">
+      <button class="close" id="modalClose">Cancel</button>
+      <button class="submit" id="modalSubmit">Create account</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © 2025 Trevuno · Built for focus and real progress
+</footer>
+
+<script src="script.js" defer></script>
 </body>
 </html>
+
 
