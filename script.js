@@ -1,22 +1,39 @@
-// script.js - smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e){
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if(target) {
-            target.scrollIntoView({behavior: 'smooth'});
-        }
-    });
-});
+// Modal
+const orb = document.getElementById('crystalOrb');
+const orbBtn = document.getElementById('orbBtn');
+const modal = document.getElementById('signupModal');
+const modalClose = document.getElementById('modalClose');
+const headerSignup = document.getElementById('headerSignup');
 
-window.addEventListener("load", () => {
-    const cards = document.querySelectorAll(".card");
-    let delay = 200;
+function openModal() {
+  modal.style.display='flex';
+}
+function closeModal() {
+  modal.style.display='none';
+}
 
-    cards.forEach(card => {
-        setTimeout(() => {
-            card.classList.add("fly");
-        }, delay);
-        delay += 250;
-    });
+orb.addEventListener('click', openModal);
+orbBtn.addEventListener('click', e=>{e.stopPropagation();openModal();});
+headerSignup.addEventListener('click', e=>{e.preventDefault();openModal();});
+modalClose.addEventListener('click', closeModal);
+modal.addEventListener('click', e=>{if(e.target===modal) closeModal();});
+
+// Cards emerge animation
+const cards = [
+  document.getElementById('organizeCard'),
+  document.getElementById('productivityCard'),
+  document.getElementById('motivateCard')
+];
+
+const cardPositions = [
+  {x:-200,y:150}, // organize: lower left
+  {x:200,y:-150}, // productivity: upper right
+  {x:-150,y:-180} // motivate: upper left
+];
+
+window.addEventListener('load', ()=>{
+  cards.forEach((card,i)=>{
+    card.style.opacity='1';
+    card.style.transform=`translate(${cardPositions[i].x}px, ${cardPositions[i].y}px)`;
+  });
 });
