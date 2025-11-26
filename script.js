@@ -5,18 +5,14 @@ const modal = document.getElementById('signupModal');
 const modalClose = document.getElementById('modalClose');
 const headerSignup = document.getElementById('headerSignup');
 
-function openModal() {
-  modal.style.display='flex';
-}
-function closeModal() {
-  modal.style.display='none';
-}
+function openModal() { modal.style.display='flex'; }
+function closeModal() { modal.style.display='none'; }
 
 orb.addEventListener('click', openModal);
-orbBtn.addEventListener('click', e=>{e.stopPropagation();openModal();});
-headerSignup.addEventListener('click', e=>{e.preventDefault();openModal();});
+orbBtn.addEventListener('click', e=>{ e.stopPropagation(); openModal(); });
+headerSignup.addEventListener('click', e=>{ e.preventDefault(); openModal(); });
 modalClose.addEventListener('click', closeModal);
-modal.addEventListener('click', e=>{if(e.target===modal) closeModal();});
+modal.addEventListener('click', e=>{ if(e.target===modal) closeModal(); });
 
 // Cards emerge animation
 const cards = [
@@ -26,9 +22,9 @@ const cards = [
 ];
 
 const cardPositions = [
-  {x:-200,y:150}, // organize: lower left
-  {x:200,y:-150}, // productivity: upper right
-  {x:-150,y:-180} // motivate: upper left
+  {x:-200,y:150}, // organize
+  {x:200,y:-150}, // productivity
+  {x:-150,y:-180} // motivate
 ];
 
 window.addEventListener('load', ()=>{
