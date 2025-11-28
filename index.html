@@ -1,62 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Trevuno</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trevuno — Unlock Your Potential</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <nav class="navbar">
-    <ul>
-      <li><a href="#organize">Organize</a></li>
-      <li><a href="#productivity">Productivity</a></li>
-      <li><a href="#motivate">Motivate</a></li>
-    </ul>
+
+<header>
+  <div class="brand">Trevuno</div>
+  <nav>
+    <a href="#organize">Organize</a>
+    <a href="#productivity">Productivity</a>
+    <a href="#motivate">Motivate</a>
   </nav>
+</header>
 
-  <main class="container">
-    <section class="intro">
-      <h1>Enter Your Journey</h1>
-      <p>Click the crystal orb to begin</p>
+<main>
+  <!-- HERO / ORB SECTION -->
+  <div class="gateway">
+    <h2 class="entry-title">Enter Your Journey</h2>
+    <p class="entry-subtitle">Click the crystal orb to begin</p>
 
-      <!-- Launchpad keeps the orb and cards aligned -->
-      <div class="launchpad">
-        <button class="square hidden" id="focus">Focus</button>
-        <button class="start" id="start" aria-label="Start">Start</button>
-        <button class="square hidden" id="habits">Habits</button>
-      </div>
-    </section>
+    <!-- Orb -->
+    <div class="orb lift-orb" id="crystalOrb">
+      <button class="btn" id="orbBtn">Start</button>
+    </div>
 
-    <section id="organize" class="organize">
-      <h2>Organize</h2>
-      <p>Structure your day with clarity.</p>
-      <div class="button-row">
-        <button class="square">Motivate</button>
-        <button class="square">Productivity</button>
-      </div>
-    </section>
-  </main>
+    <!-- Cards -->
+    <div class="emerge-cards">
+      <div class="card" style="--i:0; --angle:-40;"></div>
+      <div class="card" style="--i:1; --angle:40;"></div>
+      <div class="card" style="--i:2; --angle:130;"></div>
+      <div class="card" style="--i:3; --angle:220;"></div>
+      <div class="card" style="--i:4; --angle:310;"></div>
+    </div>
+  </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const startBtn = document.getElementById('start');
-      const focusBtn = document.getElementById('focus');
-      const habitsBtn = document.getElementById('habits');
+  <!-- Placeholder sections for navigation -->
+  <section id="organize">
+    <h2>Organize</h2>
+    <p>Structure your day with clarity.</p>
+  </section>
 
-      startBtn.addEventListener('click', () => {
-        // Remove the hidden state so animation can show them
-        focusBtn.classList.remove('hidden');
-        habitsBtn.classList.remove('hidden');
+  <section id="productivity">
+    <h2>Productivity</h2>
+    <p>Boost efficiency with proven methods.</p>
+  </section>
 
-        // Trigger emergence animations symmetrically
-        focusBtn.classList.remove('emerge-right');
-        habitsBtn.classList.remove('emerge-left');
+  <section id="motivate">
+    <h2>Motivate</h2>
+    <p>Stay inspired and keep moving forward.</p>
+  </section>
+</main>
 
-        focusBtn.classList.add('emerge-left');
-        habitsBtn.classList.add('emerge-right');
-      });
-    });
-  </script>
+<footer>© 2025 Trevuno · Built for focus and real progress</footer>
+
+<script src="script.js" defer></script>
 </body>
 </html>
