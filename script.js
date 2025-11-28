@@ -22,12 +22,7 @@ document.getElementById("orbBtn").addEventListener("click", () => {
 
 
 
-const cards = document.querySelectorAll('.card');
-const total = cards.length;
-cards.forEach((card, i) => {
-  const angle = (i / total) * 360; // evenly around a circle
-  card.style.setProperty('--angle', angle);
-});
+
 
 
 
