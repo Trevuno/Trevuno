@@ -2,9 +2,9 @@
 window.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.card').forEach(card => {
     const angle = parseFloat(card.style.getPropertyValue('--angle'));
-    const rad = angle * Math.PI / 200;
+    const rad = angle * Math.PI / 180;
     const x = Math.cos(rad) * 240;
-    const y = Math.sin(rad) * 300;
+    const y = Math.sin(rad) * 240;
     card.style.setProperty('--x', `${x}px`);
     card.style.setProperty('--y', `${y}px`);
   });
@@ -18,6 +18,7 @@ window.addEventListener('DOMContentLoaded', () => {
 document.getElementById("orbBtn").addEventListener("click", () => {
   document.getElementById("crystalOrb").classList.add("active");
 });
+
 
 
 
