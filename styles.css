@@ -114,6 +114,7 @@ nav a {
   align-items: center;
   margin-top: 200px;
   gap: 14px;
+  margin-bottom: 100px; /* ensures cards don't overlap next section */
 }
 
 .entry-title {
@@ -153,6 +154,7 @@ nav a {
   align-items: center;
   justify-content: center;
   text-align: center;
+  margin: 10px;
   opacity: 0;
   animation: fadeIn 1s ease forwards;
   animation-delay: calc(var(--i) * 0.25s);
