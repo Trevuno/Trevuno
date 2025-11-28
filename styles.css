@@ -41,14 +41,30 @@ nav a { margin: 0 12px; text-decoration: none; color: #fff; font-weight: 600; }
 
 /* Orb */
 .orb {
-  width: 160px; height: 160px; border-radius: 50%;
-  background: radial-gradient(circle at center, #00c6a7 0%, #007f6e 100%);
-  box-shadow: 0 0 40px rgba(0,198,167,0.6), 0 0 80px rgba(0,198,167,0.3);
-  display: flex; align-items: center; justify-content: center;
+  width: 220px;   /* bigger */
+  height: 220px;  /* bigger */
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #00f3c2, #007f6e);
+  box-shadow: 
+    0 0 30px rgba(0,243,194,0.6),
+    0 0 80px rgba(0,243,194,0.4),
+    inset 0 -10px 30px rgba(255,255,255,0.2); /* inner glow */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: transform 0.5s ease;
   z-index: 10;
+  border: 2px solid rgba(255,255,255,0.1); /* subtle edge highlight */
+  background-blend-mode: overlay;
 }
-.orb:hover { transform: scale(1.05); }
+.orb:hover {
+  transform: scale(1.1);
+  box-shadow:
+    0 0 40px rgba(0,243,194,0.7),
+    0 0 100px rgba(0,243,194,0.5),
+    inset 0 -10px 40px rgba(255,255,255,0.3);
+}
+
 .orb.lift-orb.active { transform: translateY(-30px) scale(1.2); }
 
 .btn {
@@ -113,6 +129,7 @@ section h2 { margin-bottom: 12px; }
 footer {
   text-align: center; padding: 20px; font-size: 14px; opacity: 0.7;
 }
+
 
 
 
