@@ -18,3 +18,4 @@ window.addEventListener('DOMContentLoaded', () => {
 document.getElementById("orbBtn").addEventListener("click", () => {
   document.getElementById("crystalOrb").classList.add("active");
 });
+
