@@ -1,38 +1,20 @@
-const orb = document.getElementById('crystalOrb');
-const orbBtn = document.getElementById('orbBtn');
-const modal = document.getElementById('signupModal');
-const modalClose = document.getElementById('modalClose');
-const headerSignup = document.getElementById('headerSignup');
-
-function openModal() { modal.style.display='flex'; }
-function closeModal() { modal.style.display='none'; }
-
-orb.addEventListener('click', openModal);
-orbBtn.addEventListener('click', e => { e.stopPropagation(); openModal(); });
-headerSignup.addEventListener('click', e => { e.preventDefault(); openModal(); });
-modalClose.addEventListener('click', closeModal);
-modal.addEventListener('click', e => { if(e.target===modal) closeModal(); });
-
-// Cards emergence
-const cards = [
-  {el:document.querySelector('.card.organize'), x:-220, y:100},
-  {el:document.querySelector('.card.productivity'), x:220, y:-60},
-  {el:document.querySelector('.card.motivate'), x:0, y:-180}
-];
-
-window.addEventListener('load', () => {
-  cards.forEach((card, i) => {
-    card.el.style.left='50%';
-    card.el.style.top='50%';
-    card.el.style.transform='translate(-50%, -50%)';
-    card.el.style.opacity=1;
-    setTimeout(()=>{
-      card.el.style.transition='transform 1s ease, opacity 0.8s';
-      card.el.style.transform=`translate(calc(-50% + ${card.x}px), calc(-50% + ${card.y}px))`;
-    }, 300 + i*200);
+// Calculate card positions on load
+window.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.card').forEach(card => {
+    const angle = parseFloat(card.style.getPropertyValue('--angle'));
+    const rad = angle * Math.PI / 180;
+    const x = Math.cos(rad) * 240;
+    const y = Math.sin(rad) * 240;
+    card.style.setProperty('--x', `${x}px`);
+    card.style.setProperty('--y', `${y}px`);
   });
+
+  // Trigger orb lift + card burst
+  const orb = document.querySelector('.lift-orb');
+  orb.classList.add('active');
 });
 
+// Optional: orb button click adds extra lift effect
 document.getElementById("orbBtn").addEventListener("click", () => {
   document.getElementById("crystalOrb").classList.add("active");
 });
