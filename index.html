@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Trevuno — Unlock Your Potential</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -19,24 +23,59 @@
 
 <main>
   <div class="hero">
-    <div class="orb-container">
-      <div class="orb lift-orb" id="crystalOrb">
-        <button class="btn" id="orbBtn">Start</button>
+    <div class="orb-wrap">
+      <!-- Decorative floating glow layers -->
+      <div class="orb-glow orb-glow-1" aria-hidden="true"></div>
+      <div class="orb-glow orb-glow-2" aria-hidden="true"></div>
+
+      <!-- Orb (glossy, pastel gradient) -->
+      <div class="orb lift-orb" id="crystalOrb" role="button" aria-label="Start">
+        <svg class="orb-shine" viewBox="0 0 200 200" aria-hidden="true">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0" stop-color="rgba(255,255,255,0.9)"/>
+              <stop offset="1" stop-color="rgba(255,255,255,0.0)"/>
+            </linearGradient>
+          </defs>
+          <circle cx="100" cy="100" r="80" fill="url(#g1)" opacity="0.28"/>
+        </svg>
+        <button class="btn" id="orbBtn" aria-hidden="true">Start</button>
       </div>
 
-      <div class="emerge-cards">
-        <div class="card" style="--i:0;">Organize</div>
-        <div class="card" style="--i:1;">Productivity</div>
-        <div class="card" style="--i:2;">Motivate</div>
-        <div class="card" style="--i:3;">Focus</div>
-        <div class="card" style="--i:4;">Habits</div>
+      <!-- Floating cards -->
+      <div class="emerge-cards" aria-hidden="true">
+        <div class="card" style="--i:0;">
+          <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a2 2 0 0 1 2 2v4h4a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4V4a2 2 0 0 1 2-2z" fill="currentColor"/></svg>
+          <span>Organize</span>
+        </div>
+
+        <div class="card" style="--i:1;">
+          <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v10l3-2 5 6H5l4-6 3 2V2z" fill="currentColor"/></svg>
+          <span>Productivity</span>
+        </div>
+
+        <div class="card" style="--i:2;">
+          <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm1 11h4v2h-6V6h2v8z" fill="currentColor"/></svg>
+          <span>Motivate</span>
+        </div>
+
+        <div class="card" style="--i:3;">
+          <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v2H4zM4 10h16v2H4zM4 14h10v2H4z" fill="currentColor"/></svg>
+          <span>Focus</span>
+        </div>
+
+        <div class="card" style="--i:4;">
+          <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zM3 21a9 9 0 0 1 18 0H3z" fill="currentColor"/></svg>
+          <span>Habits</span>
+        </div>
       </div>
     </div>
   </div>
 
-  <section id="organize"></section>
-  <section id="productivity"></section>
-  <section id="motivate"></section>
+  <!-- Empty (clean) sections so nav still works -->
+  <section id="organize" class="empty-section"></section>
+  <section id="productivity" class="empty-section"></section>
+  <section id="motivate" class="empty-section"></section>
 </main>
 
 <footer>© 2025 Trevuno · Built for focus and real progress</footer>
