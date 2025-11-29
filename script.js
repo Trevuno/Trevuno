@@ -13,33 +13,20 @@ window.addEventListener('DOMContentLoaded', () => {
     // Store positions in CSS variables
     card.style.setProperty('--x', `${x}px`);
     card.style.setProperty('--y', `${y}px`);
-    card.style.setProperty('--i', i); // useful for staggered animations
+    card.style.setProperty('--i', i);
     card.style.zIndex = total - i;
   });
 
-  // Orb lift + burst trigger on page load
+  // Orb lift animation trigger on page load
   const orb = document.querySelector('.lift-orb');
   if (orb) {
     orb.classList.add('active');
   }
-});
 
-// Handle orb button click
-document.getElementById("orbBtn").addEventListener("click", () => {
-  const orb = document.getElementById("crystalOrb");
-  orb.classList.add("active");
-
-  const cards = document.querySelectorAll('.card');
-
-  // Animate cards outward with staggered timing
+  // Animate cards outward automatically on page load
   cards.forEach((card, i) => {
     setTimeout(() => {
       card.classList.add("active");
-    }, i * 200); // 200ms delay between each card
+    }, i * 200); // staggered reveal
   });
 });
-
-
-
-
-
