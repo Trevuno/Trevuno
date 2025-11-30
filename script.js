@@ -153,6 +153,13 @@ for (let i = 0; i < 15; i++) {
 }
 
 
+document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+  trigger.addEventListener('click', () => {
+    const item = trigger.parentElement;
+    item.classList.toggle('open');
+  });
+});
+
 
 
 
