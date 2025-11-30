@@ -3,117 +3,131 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trevuno Landing Page</title>
-  
+  <title>Trevuno Signup</title>
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Lucide Icons CDN -->
-  <script src="https://unpkg.com/lucide"></script>
-
-  <!-- Custom CSS -->
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Custom Styles -->
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-[#F3EEF1] relative overflow-x-hidden font-sans">
+<body class="min-h-screen bg-[#F3EEF1] relative overflow-hidden">
 
-  <!-- Floating Crystals -->
+  <!-- Floating Particles -->
   <div class="fixed inset-0 pointer-events-none z-0">
-    <!-- Small particles -->
-    <div id="particles-container"></div>
-    <!-- Crystals -->
-    <div id="crystals-container"></div>
+    <!-- 30 small particles -->
+    <div id="particles"></div>
+    <!-- 20 crystal particles -->
+    <div id="crystals"></div>
   </div>
 
   <!-- Header -->
-  <header class="sticky top-0 z-40 bg-[#F3EEF1]/80 backdrop-blur-xl border-b border-[#D56989]/10">
-    <div class="max-w-7xl mx-auto px-6 md:px-12 py-6 flex items-center justify-between">
+  <header class="relative z-10 px-6 md:px-12 py-6 border-b border-[#D56989]/10 bg-white/40 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <button id="backBtn" class="flex items-center gap-2 text-[#D56989] hover:text-[#D56989]/80 transition-colors">
+        <i data-lucide="arrow-left"></i>
+        <span class="font-medium">Back</span>
+      </button>
+
       <div class="flex items-center gap-3">
-        <div class="relative">
-          <div class="absolute inset-0 bg-gradient-to-br from-[#C2DC80] to-[#EA9CAF] rounded-2xl blur-md opacity-60 animate-pulse-slow"></div>
-          <div class="relative w-11 h-11 rounded-2xl bg-gradient-to-br from-[#C2DC80] to-[#EA9CAF] flex items-center justify-center shadow-lg">
-            <i data-lucide="rocket" class="w-6 h-6 text-white"></i>
-          </div>
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-[#C2DC80] to-[#EA9CAF] flex items-center justify-center shadow-lg">
+          <i data-lucide="rocket" class="text-white"></i>
         </div>
-        <span class="text-[#D56989] text-xl md:text-2xl font-bold">Trevuno</span>
+        <span class="text-[#D56989] text-xl font-bold">Trevuno</span>
       </div>
 
-      <nav class="hidden lg:flex items-center gap-8">
-        <a href="#features" class="text-[#D56989]/70 hover:text-[#D56989] transition-colors">Features</a>
-        <a href="#how-it-works" class="text-[#D56989]/70 hover:text-[#D56989] transition-colors">How it Works</a>
-        <a href="#pricing" class="text-[#D56989]/70 hover:text-[#D56989] transition-colors">Pricing</a>
-      </nav>
-
-      <div class="flex items-center gap-4">
-        <button id="signup-btn" class="group relative px-6 md:px-8 py-3 md:py-4 rounded-[2rem] overflow-hidden shadow-lg hover:shadow-xl transition-all hover:scale-105">
-          <div class="absolute inset-0 bg-gradient-to-r from-[#EA9CAF] via-[#D56989] to-[#EA9CAF] bg-[length:200%_100%] animate-gradient"></div>
-          <div class="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-          <span class="relative text-white font-semibold flex items-center gap-2">
-            Start for Free
-            <i data-lucide="sparkles" class="w-4 h-4 group-hover:rotate-12 transition-transform"></i>
-          </span>
-        </button>
-
-        <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 rounded-xl bg-[#EA9CAF]/10 flex items-center justify-center">
-          <i data-lucide="menu" class="w-5 h-5 text-[#D56989]"></i>
-        </button>
-      </div>
+      <div class="w-20"></div>
     </div>
   </header>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="fixed inset-0 bg-[#D56989]/95 backdrop-blur-xl z-50 p-8 md:hidden hidden">
-    <div class="flex justify-between items-center mb-12">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-[#C2DC80] to-[#EA9CAF] flex items-center justify-center shadow-lg">
-          <i data-lucide="rocket" class="w-5 h-5 text-white"></i>
-        </div>
-        <span class="text-white text-xl font-semibold">Trevuno</span>
-      </div>
-      <button id="mobile-close" class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-        <i data-lucide="x" class="w-6 h-6 text-white"></i>
-      </button>
-    </div>
-    <nav class="space-y-4">
-      <a href="#features" class="block text-white text-2xl font-medium py-3 border-b border-white/20">Features</a>
-      <a href="#how-it-works" class="block text-white text-2xl font-medium py-3 border-b border-white/20">How it Works</a>
-      <a href="#pricing" class="block text-white text-2xl font-medium py-3 border-b border-white/20">Pricing</a>
-    </nav>
-    <button id="mobile-signup-btn" class="mt-12 w-full py-5 rounded-[2rem] bg-white text-[#D56989] font-bold text-lg shadow-2xl">Start for Free</button>
-  </div>
+  <!-- Main Content -->
+  <main class="relative z-10 px-6 md:px-12 py-12 md:py-20 max-w-6xl mx-auto">
 
-  <!-- Hero Section -->
-  <section class="relative py-12 md:py-24 px-6 md:px-12 text-center">
-    <div class="max-w-7xl mx-auto">
-      <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-[1.1]">
-        <span class="block text-[#D56989] mb-2">Your Life,</span>
-        <span class="block bg-gradient-to-r from-[#C2DC80] via-[#EA9CAF] to-[#D56989] bg-clip-text text-transparent">
-          Beautifully Organized
-        </span>
+    <!-- Hero Section -->
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/60 backdrop-blur-sm border border-[#EA9CAF]/20 mb-6">
+        <i data-lucide="sparkles" class="text-[#EA9CAF] w-4 h-4"></i>
+        <span class="text-[#D56989] text-sm font-medium">Start Your Free Trial</span>
+      </div>
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-[#D56989] mb-4">
+        Welcome to <span class="bg-gradient-to-r from-[#C2DC80] via-[#EA9CAF] to-[#D56989] bg-clip-text text-transparent">Trevuno</span>
       </h1>
-      <p class="text-[#D56989]/70 text-lg md:text-2xl max-w-3xl mx-auto mb-12 leading-relaxed">
-        Experience productivity reimagined with Trevuno. Focus deeply, build lasting habits, organize effortlessly, and stay motivated.
+      <p class="text-[#D56989]/70 text-xl max-w-2xl mx-auto">
+        Join thousands of productive individuals and transform how you work.
       </p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <button id="hero-signup-btn" class="group relative px-10 py-5 rounded-[2rem] overflow-hidden shadow-2xl hover:shadow-3xl transition-all hover:scale-105">
-          <div class="absolute inset-0 bg-gradient-to-r from-[#D56989] via-[#EA9CAF] to-[#D56989] bg-[length:200%_100%] animate-gradient"></div>
-          <div class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-          <span class="relative text-white font-bold text-lg flex items-center gap-3">
-            Start Your Journey
-            <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
-          </span>
-        </button>
-        <button class="px-10 py-5 rounded-[2rem] bg-white/60 backdrop-blur-sm border border-[#D56989]/20 text-[#D56989] font-semibold hover:bg-white/80 transition-all">
-          Watch Demo
-        </button>
-      </div>
     </div>
-  </section>
 
-  <!-- (Other sections like Features, How it Works, Testimonials, Pricing, Footer go here — same structure, can be added next) -->
+    <!-- Signup & Plans -->
+    <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
 
-  <!-- Scripts -->
+      <!-- Signup Form -->
+      <div class="relative overflow-hidden rounded-[2.5rem] bg-white/60 backdrop-blur-xl border border-[#D56989]/20 p-8 md:p-12">
+        <div class="absolute top-0 right-0 w-48 h-48 bg-[#EA9CAF]/10 rounded-full blur-3xl"></div>
+        <h2 class="text-2xl md:text-3xl font-bold text-[#D56989] mb-8">Create Your Account</h2>
+        <form class="space-y-6">
+          <!-- Full Name -->
+          <div>
+            <label class="block text-[#D56989] font-medium mb-2">Full Name</label>
+            <div class="relative">
+              <i data-lucide="user" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#D56989]/40"></i>
+              <input type="text" placeholder="John Doe" class="w-full pl-12 pr-4 py-4 rounded-2xl bg-white/80 border border-[#D56989]/20 text-[#D56989] placeholder:text-[#D56989]/40 focus:outline-none focus:border-[#EA9CAF] transition-colors">
+            </div>
+          </div>
+          <!-- Email -->
+          <div>
+            <label class="block text-[#D56989] font-medium mb-2">Email Address</label>
+            <div class="relative">
+              <i data-lucide="mail" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#D56989]/40"></i>
+              <input type="email" placeholder="you@example.com" class="w-full pl-12 pr-4 py-4 rounded-2xl bg-white/80 border border-[#D56989]/20 text-[#D56989] placeholder:text-[#D56989]/40 focus:outline-none focus:border-[#EA9CAF] transition-colors">
+            </div>
+          </div>
+          <!-- Password -->
+          <div>
+            <label class="block text-[#D56989] font-medium mb-2">Password</label>
+            <div class="relative">
+              <i data-lucide="lock" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#D56989]/40"></i>
+              <input id="passwordInput" type="password" placeholder="Create a strong password" class="w-full pl-12 pr-12 py-4 rounded-2xl bg-white/80 border border-[#D56989]/20 text-[#D56989] placeholder:text-[#D56989]/40 focus:outline-none focus:border-[#EA9CAF] transition-colors">
+              <button type="button" id="togglePassword" class="absolute right-4 top-1/2 -translate-y-1/2 text-[#D56989]/40 hover:text-[#D56989] transition-colors">
+                <i data-lucide="eye"></i>
+              </button>
+            </div>
+          </div>
+          <!-- Terms -->
+          <div class="flex items-start gap-3">
+            <input type="checkbox" id="terms" class="mt-1 w-5 h-5 rounded border-[#D56989]/20 text-[#EA9CAF] focus:ring-[#EA9CAF]">
+            <label for="terms" class="text-[#D56989]/70 text-sm">
+              I agree to the <a href="#" class="text-[#EA9CAF] hover:underline">Terms of Service</a> and <a href="#" class="text-[#EA9CAF] hover:underline">Privacy Policy</a>
+            </label>
+          </div>
+          <!-- Submit -->
+          <button type="submit" class="group relative w-full py-5 rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#D56989] via-[#EA9CAF] to-[#D56989] bg-[length:200%_100%] animate-gradient"></div>
+            <div class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <span class="relative text-white font-bold text-lg flex items-center justify-center gap-2">
+              Start Your Journey
+              <i data-lucide="sparkles" class="w-5 h-5 group-hover:rotate-12 transition-transform"></i>
+            </span>
+          </button>
+          <p class="text-center text-[#D56989]/60 text-sm">
+            Already have an account? <a href="#" class="text-[#EA9CAF] hover:underline font-medium">Sign in</a>
+          </p>
+        </form>
+      </div>
+
+      <!-- Plans Section -->
+      <div class="space-y-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-[#D56989] mb-6">Choose Your Plan</h2>
+        <!-- Plans will be generated by JS -->
+        <div id="plansContainer" class="space-y-6"></div>
+      </div>
+
+    </div>
+
+  </main>
+
   <script src="script.js"></script>
   <script>
-    // Activate Lucide icons
+    // Initialize Lucide icons
     lucide.replace();
   </script>
 </body>
