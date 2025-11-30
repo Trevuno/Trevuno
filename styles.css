@@ -59,3 +59,38 @@
 .animate-gradient { animation: gradient 3s ease infinite; }
 .animate-pulse-slow { animation: pulse-slow 3s ease-in-out infinite; }
 .animate-fadeIn { animation: fadeIn 0.3s ease-out; }
+
+
+.accordion-item {
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.accordion-trigger {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem;
+  background: none;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.accordion-icon {
+  transition: transform 0.2s;
+}
+
+.accordion-item.open .accordion-icon {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.accordion-item.open .accordion-content {
+  max-height: 500px; /* adjust as needed */
+}
+
