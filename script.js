@@ -1,10 +1,21 @@
-// Sidebar toggle
-const menuBtn = document.getElementById('menuBtn');
-const sidebar = document.getElementById('sidebar');
+const sidebar = document.getElementById("sidebar");
+const toggleBtn = document.getElementById("toggleBtn");
+const content = document.getElementById("content");
 
-menuBtn.addEventListener('click', () => {
-  sidebar.classList.toggle('hidden');
+let sidebarVisible = false;
+
+toggleBtn.addEventListener("click", () => {
+  sidebarVisible = !sidebarVisible;
+
+  if (sidebarVisible) {
+    sidebar.classList.remove("hidden");
+    toggleBtn.innerText = "Hide";
+  } else {
+    sidebar.classList.add("hidden");
+    toggleBtn.innerText = "Menu";
+  }
 });
+
 
 
 
