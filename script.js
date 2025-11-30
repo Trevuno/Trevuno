@@ -102,3 +102,57 @@ for (let i = 0; i < 20; i++) {
 
 
 
+// Mobile Menu Toggle
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mobileCloseBtn = document.getElementById('mobile-close');
+const mobileMenu = document.getElementById('mobile-menu');
+
+mobileMenuBtn.addEventListener('click', () => {
+  mobileMenu.classList.remove('hidden');
+});
+
+mobileCloseBtn.addEventListener('click', () => {
+  mobileMenu.classList.add('hidden');
+});
+
+// Signup buttons go to signup page
+const signupButtons = [
+  document.getElementById('signup-btn'),
+  document.getElementById('mobile-signup-btn'),
+  document.getElementById('hero-signup-btn')
+];
+
+signupButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    window.location.href = 'signup.html';
+  });
+});
+
+// Floating particles (optional small JS effect)
+const particlesContainer = document.getElementById('particles-container');
+const crystalsContainer = document.getElementById('crystals-container');
+
+for (let i = 0; i < 20; i++) {
+  const div = document.createElement('div');
+  div.className = 'absolute w-2 h-2 bg-gradient-to-br from-[#EA9CAF]/40 to-[#D56989]/40 rounded-full blur-[1px] animate-float-particle';
+  div.style.left = `${Math.random() * 100}%`;
+  div.style.top = `${Math.random() * 100}%`;
+  div.style.animationDelay = `${Math.random() * 5}s`;
+  div.style.animationDuration = `${8 + Math.random() * 8}s`;
+  particlesContainer.appendChild(div);
+}
+
+for (let i = 0; i < 15; i++) {
+  const div = document.createElement('div');
+  div.className = 'absolute w-3 h-3 rotate-45 bg-gradient-to-br from-[#C2DC80]/30 to-[#EA9CAF]/30 animate-crystal-float';
+  div.style.left = `${Math.random() * 100}%`;
+  div.style.top = `${Math.random() * 100}%`;
+  div.style.animationDelay = `${Math.random() * 4}s`;
+  div.style.animationDuration = `${10 + Math.random() * 10}s`;
+  crystalsContainer.appendChild(div);
+}
+
+
+
+
+
