@@ -145,3 +145,128 @@
   </div>
 </div>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alert Dialog</title>
+<style>
+  /* Overlay */
+  .alert-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 50;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .alert-overlay.active {
+    display: block;
+    opacity: 1;
+  }
+
+  /* Modal content */
+  .alert-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 400px;
+    width: 90%;
+    z-index: 100;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .alert-content.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  /* Header, footer, title, description */
+  .alert-header {
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .alert-description {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+  }
+  .alert-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+
+  /* Buttons */
+  .btn {
+    padding: 0.6rem 1.2rem;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .btn-primary {
+    background: #D56989;
+    color: white;
+  }
+  .btn-outline {
+    background: transparent;
+    border: 2px solid #D56989;
+    color: #D56989;
+  }
+</style>
+</head>
+<body>
+
+<!-- Trigger -->
+<button id="openAlert" class="btn btn-primary">Open Alert</button>
+
+<!-- Alert Dialog -->
+<div id="alertOverlay" class="alert-overlay"></div>
+<div id="alertDialog" class="alert-content">
+  <div class="alert-header">Alert Title</div>
+  <div class="alert-description">This is the alert description. You can explain the message here.</div>
+  <div class="alert-footer">
+    <button id="cancelAlert" class="btn btn-outline">Cancel</button>
+    <button id="confirmAlert" class="btn btn-primary">Confirm</button>
+  </div>
+</div>
+
+<script>
+  const openBtn = document.getElementById('openAlert');
+  const overlay = document.getElementById('alertOverlay');
+  const dialog = document.getElementById('alertDialog');
+  const cancelBtn = document.getElementById('cancelAlert');
+  const confirmBtn = document.getElementById('confirmAlert');
+
+  function openDialog() {
+    overlay.classList.add('active');
+    dialog.classList.add('active');
+  }
+
+  function closeDialog() {
+    overlay.classList.remove('active');
+    dialog.classList.remove('active');
+  }
+
+  openBtn.addEventListener('click', openDialog);
+  cancelBtn.addEventListener('click', closeDialog);
+  overlay.addEventListener('click', closeDialog);
+
+  confirmBtn.addEventListener('click', () => {
+    alert("Confirmed!");
+    closeDialog();
+  });
+</script>
+
+</body>
+</html>
+
